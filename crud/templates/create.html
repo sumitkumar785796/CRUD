@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block start %}
+<h2 class="text-center">{{title}}</h2>
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-sm-6">
+                <label for="fname">First Name</label>
+                <input type="text" class="form-control" id="fname" name="fname" autocomplete="off" placeholder="Enter First Name" value="{{q.fname}}" required>
+            </div>
+            <div class="col-sm-6">
+                <label for="lname">Last Name</label>
+                <input type="text" class="form-control" id="lname" name="lname" autocomplete="off" placeholder="Enter Last Name" value="{{q.lname}}" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <label for="email">Email ID</label>
+                <input type="email" class="form-control" id="email" name="email" autocomplete="off" placeholder="Enter Email Id" value="{{q.email}}" required>
+            </div>
+            <div class="col-sm-6">
+                <label for="mob">Mobile Number <span>*</span> </label>
+                <input type="text" class="form-control textbox" maxlength="10" id="mob" name="mob" autocomplete="off" placeholder="Enter Mobile Number" value="{{q.mob}}" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea class="form-control" id="address" name="address" placeholder="Enter Full Address" rows="3">{{q.address}}</textarea>
+            </div>
+        </div><br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<script>
+      $(".textbox").keypress(function (e) {
+      let myArray = [];
+      for (i = 48; i < 58; i++) myArray.push(i);
+      if (!(myArray.indexOf(e.which) >= 0)) e.preventDefault();
+  });
+  $("form").submit(function (e) {
+      if ($(".textbox").val().length === 10) {
+          // alert("Submitted successfully!");
+      } else {
+          e.preventDefault();
+          alert("Enter ten numbers");
+      }
+  });
+</script>
+{% endblock %}

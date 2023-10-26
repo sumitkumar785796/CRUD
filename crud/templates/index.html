@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block start %}
+<div class="container">
+  {% if messages %}
+<div class="alert alert-info">
+  {% for message in messages %}
+  {{message}}
+  {% endfor %}
+</div>
+{% endif %}
+</div>
+<br>
+<div class="text-center">
+    <img src="/static/img.png" class="rounded" alt="error" usemap="#workmap" height="500" width="1000">
+    <map name="workmap">
+        <area shape="rect" coords="34,44,270,350" alt="create" href="/create/">
+        <area shape="rect" coords="44,64,490,450" alt="read" href="/view/">
+        <area shape="circle" coords="54,84,690,450" alt="update" href="/update/">
+        <area shape="circle" coords="54,84,840,450" alt="delete" href="/delete/">
+      </map>
+  </div>
+{% endblock %}

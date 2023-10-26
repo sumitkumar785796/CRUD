@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block start %}
+
+<h2 class="text-center">{{title}}</h2>
+<div class="container">
+    <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email Id</th>
+            <th scope="col">Mobile Number</th>
+            <th scope="col">Address</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for obj in query %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{obj.fname}} {{obj.lname}}</td>
+            <td>{{obj.email}}</td>
+            <td>{{obj.mob}}</td>
+            <td>{{obj.address}}</td>
+            <td><a href="{{obj.id}}"><button class="btn btn-primary">delete</button></a></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+</div>
+{% endblock %}
